@@ -1,0 +1,63 @@
+<h2>Welcome to the Wedding Planner, @ViewBag.NewUser.FirstName</h2>
+<a href="logout">Logout</a>
+
+
+ <div class="row">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th scope="col">Wedding</th>
+          <th scope="col">Date</th> 
+          <th scope="col">Guest</th>
+          <th scope="col">Action</th>
+        </tr>
+
+        
+        @model List<Wedding>
+          @foreach(var i in @Model)
+          {
+            var attending = false;
+            <tr  scope="row">
+              <td><a href="show/@i.WeddingId">@i.WedderOne & @i.WedderTwo</a></td>
+              <td>@i.Date.ToString("MMM d, yyy")</td>
+              <td>@i.Users.Count</td>
+
+              
+
+              @foreach(var x in i.Users)
+              {
+                @if(x.UserId == ViewBag.Id)
+                {
+                  attending = true;
+                }
+                
+              }
+
+              <td>
+                @if(attending == true)
+              
+                {
+                  <form action="/UNRSVP/@i.WeddingId" method="POST">
+                    <input type="submit" value="UN-RSVP">
+                  </form>
+                }
+                else
+                {
+                  <form action="/RSVP/@i.WeddingId" method="POST">
+                    <input type="submit" value="RSVP">
+                  </form>
+                }
+                
+
+                
+              </td>
+
+             
+            </tr>
+          }
+      </table>
+
+        <h3><a href="wedding">New Wedding</h3>
+
+    </div>
+  </div>

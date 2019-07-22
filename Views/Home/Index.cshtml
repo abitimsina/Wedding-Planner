@@ -1,0 +1,66 @@
+﻿@model User
+<h1>Register!</h1>
+
+
+<div class="container">
+    
+    <form action="/create" method="POST">
+
+        <div class="form-group">
+            <span asp-validation-for="FirstName"></span>
+            <label asp-for="FirstName">First Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" asp-for='FirstName' value="">
+        </div>
+
+        <div class="form-group">
+            <span asp-validation-for="LastName"></span>
+            <label asp-for="LastName">Last Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" asp-for='LastName' value="">
+        </div>
+
+        <div class="form-group">
+            <span asp-validation-for="Email"></span>
+            <label asp-for="Email">Email</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" asp-for='Email' value="">
+        </div>
+
+        <div class="form-group">
+            <span asp-validation-for="Password"></span>
+            <label asp-for="Password">Password</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" asp-for='Password' value="">
+        </div>
+
+        <div class="form-group">
+            <span asp-validation-for="PasswordConfirmation"></span>
+            <label asp-for="PasswordConfirmation">Confirm Password</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" asp-for='PasswordConfirmation' value="">
+        </div>
+
+        <button type="submit" value='submit' class="btn btn-primary">Register!</button>
+    </form>
+</div>
+
+
+<div>
+<h1>@ViewBag.show</h1>
+<h1>Login!</h1>    
+<form action="login" method="POST">
+
+    <label>Email: 
+        <span asp-validation-for="Email"></span>
+        <input type="text" name="Email">
+    </label>
+
+    <label>Password:
+        <span asp-validation-for="Password"></span>
+        <input type="text" name="Password">
+    </label>
+
+    <br>
+    <button type="submit" value='submit' class="btn btn-primary">Login!</button>
+
+</form>  
+</div>
+
+
+
